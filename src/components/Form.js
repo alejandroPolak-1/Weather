@@ -1,12 +1,6 @@
 import React, { useState } from 'react'
 
-const Form = () => {
-  //State of Form
-  const [search, setSearch] = useState({
-    country: '',
-    city: '',
-  })
-
+const Form = ({ search, setSearch, setConsult }) => {
   const [error, setError] = useState(false)
 
   //Destructuration, extract city, country
@@ -33,14 +27,27 @@ const Form = () => {
 
     setError(false)
 
-    //Pass to principal Component
+    setConsult(true)
 
-    
+    //Pass to principal Component
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      {error ? <p className="red darken-4 error">All fields are required</p> : null}
+      {error ? (
+        <p className="red darken-4 error">All fields are required</p>
+      ) : null}
+
+      <div className="input-field col s12">
+        <input
+          type="text"
+          name="city"
+          id="city"
+          value={city}
+          onChange={handleChange}
+        />
+        <label htmlFor="city"> City: </label>
+      </div>
 
       <div className="input-field col s12">
         <select
@@ -63,17 +70,10 @@ const Form = () => {
 
       <div className="input-field col s12">
         <input
-          type="text"
-          name="city"
-          id="city"
-          value={city}
-          onChange={handleChange}
+          type="submit"
+          value="Search"
+          className="waves-effect waves-dark btn-large btn-block yellow accent-4"
         />
-        <label htmlFor="city"> City: </label>
-      </div>
-
-      <div className="input-field col s12">
-        <input type="submit" value="Search" className="waves-effect waves-dark btn-large btn-block yellow accent-4" />
       </div>
     </form>
   )
