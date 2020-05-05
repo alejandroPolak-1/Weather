@@ -3,12 +3,14 @@ import React, { useState } from 'react'
 const Form = () => {
   //State of Form
   const [search, setSearch] = useState({
-      country: '',
+    country: '',
     city: '',
   })
 
+  const [error, setError] = useState(false)
+
   //Destructuration, extract city, country
-  const { country, city  } = search
+  const { country, city } = search
 
   //Handle info of click. Get info user select
   const handleChange = (e) => {
@@ -19,8 +21,27 @@ const Form = () => {
     })
   }
 
+  // Submit Form
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    //Validation
+    if (city.trim() === '' || country.trim() === '') {
+      setError(true)
+      return
+    }
+
+    setError(false)
+
+    //Pass to principal Component
+
+    
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
+      {error ? <p className="red darken-4 error">All fields are required</p> : null}
+
       <div className="input-field col s12">
         <select
           name="country"
@@ -49,6 +70,10 @@ const Form = () => {
           onChange={handleChange}
         />
         <label htmlFor="city"> City: </label>
+      </div>
+
+      <div className="input-field col s12">
+        <input type="submit" value="Search" className="waves-effect waves-dark btn-large btn-block yellow accent-4" />
       </div>
     </form>
   )
