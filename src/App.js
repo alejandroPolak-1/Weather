@@ -17,7 +17,18 @@ function App() {
   const { country, city } = search
 
   useEffect(() => {
-    console.log(city)
+    const consultAPI = async () => {
+      if (consult) {
+        const appId = ''
+        const url =
+          ' http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appId}'
+
+        const response = await fetch(url)
+        const result = response.json()
+
+        console.log(result)
+      }
+    }
   }, [consult])
 
   return (
