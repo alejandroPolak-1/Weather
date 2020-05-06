@@ -68,12 +68,15 @@ const Form = ({ search, setSearch, setConsult }) => {
         <label htmlFor="country"> Country: </label>
       </div>
 
-      <div className="input-field col s12">
-        <input
+      <div className="input-field col s12 center">
+        <button
           type="submit"
-          value="Search"
-          className="waves-effect waves-dark btn-large btn-block yellow accent-4"
-        />
+          className="waves-effect waves-yellow btn-large orange"
+          // className="waves-effect waves-dark btn-large btn-button-big yellow accent-4"
+          onChange={handleChange}
+        >
+          Search
+        </button>
       </div>
     </form>
   )

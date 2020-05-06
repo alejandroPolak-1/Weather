@@ -16,11 +16,15 @@ const kelvin= 273.15;
       <div className="black-text">
         <h2>The Weather of {name} is: </h2>
         <p className="temperatura">
-          {parseFloat(main.temp - kelvin,10).toFixed(2)} <span> &#x2103; </span></p>
-        <p> Maximum temperature:
-        {parseFloat(main.temp_max - kelvin,10).toFixed(2)} <span> &#x2103; </span></p>
-        <p> Minimum temperature
-        {parseFloat(main.temp_min  - kelvin,10).toFixed(2)} <span> &#x2103; </span></p>
+          { parseFloat(main.temp - kelvin,10).toFixed(2)} <span> &#x2103; </span></p>
+        <p> Maximum temperature: 
+        { parseFloat(main.temp_max - kelvin,10).toFixed(2)} <span> &#x2103; </span></p>
+        <p> Minimum temperature: 
+        { parseFloat(main.temp_min - kelvin,10).toFixed(2)} <span> &#x2103; </span></p>
+        <p> Pressure:  
+        { parseFloat(main.pressure).toFixed(0)} <span> hpa </span></p>
+        <p> Humidity:  
+        { parseFloat(main.humidity).toFixed(2)} <span> % </span></p>
       </div>
     </div>
   )
