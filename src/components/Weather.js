@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Weather = ({ result }) => {
   //Extraer resultados
@@ -23,6 +24,10 @@ const kelvin= 273.15;
       </div>
     </div>
   )
+}
+
+Weather.propType = {
+  result: PropTypes.object.isRequired
 }
 
 export default Weather
