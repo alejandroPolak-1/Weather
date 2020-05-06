@@ -13,22 +13,27 @@ function App() {
   //state for consult one finish writer de search (Wait before to consult of API)
   const [consult, setConsult] = useState(false)
 
+  const [result, setResult] = useState({})
+
   //Destructuration, extract city, country
   const { country, city } = search
 
   useEffect(() => {
     const consultAPI = async () => {
       if (consult) {
-        const appId = ''
+        const appId = '8223adcd73d23dff977c6386a1f9c117';
         const url =
-          ' http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appId}'
+        `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appId}`
 
         const response = await fetch(url)
-        const result = response.json()
+        const result = await response.json()
 
-        console.log(result)
+        setResult(result)
+        
+
       }
     }
+    consultAPI()
   }, [consult])
 
   return (
